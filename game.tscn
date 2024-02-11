@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3v5fq62523gv"]
+
+[ext_resource type="Texture2D" uid="uid://uo0dhjrwru3h" path="res://icon.svg" id="1_bjlvb"]
+[ext_resource type="Script" path="res://game_container.gd" id="1_h867a"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = -50.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+script = ExtResource("1_h867a")
+
+[node name="TextureRect" type="TextureRect" parent="GameContainer"]
+layout_mode = 2
+texture = ExtResource("1_bjlvb")
+
+[node name="Label" type="Label" parent="GameContainer"]
+layout_mode = 2
+text = "Slide text"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameContainer"]
+layout_mode = 2
+
+[node name="Button0" type="Button" parent="GameContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "a"
+
+[node name="Button1" type="Button" parent="GameContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "b"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="pressed" from="GameContainer/HBoxContainer/Button0" to="GameContainer" method="_on_button_0_pressed"]
+[connection signal="pressed" from="GameContainer/HBoxContainer/Button1" to="GameContainer" method="_on_button_1_pressed"]
