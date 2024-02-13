@@ -2,41 +2,100 @@ extends VBoxContainer
 
 const SLIDES = {
 	"start": {
-		"label": "Choose an option",
+		"label": "You find a dragon",
+		"image": "res://images/0.svg",
 		"buttons": {
 			0:{
-				"text": "Option a",
-				"next": "a"
+				"text": "Attack the dragon",
+				"next": "attack"
 			},
 			1:{
-				"text": "Option b",
-				"next": "b"
+				"text": "Talk to the dragon",
+				"next": "talk"
 			}
 		}
 	},
-	"a": {
-		"label": "You chose option a",
+	"attack": {
+		"label": "You attack the dragon, but the dragon shoots fire at you and gets very angry",
+		"image": "res://images/attack.svg",
 		"buttons": {
 			0:{
-				"text": "Option a",
-				"next": "a"
+				"text": "Attack the dragon again",
+				"next": "attack_again"
 			},
 			1:{
-				"text": "Option b",
-				"next": "b"
+				"text": "Say sorry to the dragon",
+				"next": "say_sorry"
 			}
 		}
 	},
-	"b": {
-		"label": "You chose option b",
+	"attack_again": {
+		"label": "You attack the dragon again, and the dragon obliterates you with more fire",
+		"image": "res://images/attack_again.svg",
 		"buttons": {
 			0:{
-				"text": "Option a",
-				"next": "a"
+				"text": "Restart",
+				"next": "start"
 			},
 			1:{
-				"text": "Option b",
-				"next": "b"
+				"text": "Restart",
+				"next": "start"
+			}
+		}
+	},
+	"say_sorry": {
+		"label": "You say sorry to the dragon, and the dragon forgives you :)",
+		"image": "res://images/say_sorry.svg",
+		"buttons": {
+			0:{
+				"text": "Restart",
+				"next": "start"
+			},
+			1:{
+				"text": "Restart",
+				"next": "start"
+			}
+		}
+	},
+	"talk": {
+		"label": "The dragon doesn't answer when you talk to him",
+		"image": "res://images/talk.svg",
+		"buttons": {
+			0:{
+				"text": "Tell the dragon a joke",
+				"next": "joke"
+			},
+			1:{
+				"text": "Tell a compliment to the dragon",
+				"next": "compliment"
+			}
+		}
+	},
+	"joke": {
+		"label": "The dragon likes your joke",
+		"image": "res://images/joke.svg",
+		"buttons": {
+			0:{
+				"text": "Restart",
+				"next": "start"
+			},
+			1:{
+				"text": "Restart",
+				"next": "start"
+			}
+		}
+	},
+	"compliment": {
+		"label": "The dragon likes your compliment",
+		"image": "res://images/compliment.svg",
+		"buttons": {
+			0:{
+				"text": "Restart",
+				"next": "start"
+			},
+			1:{
+				"text": "Restart",
+				"next": "start"
 			}
 		}
 	}
@@ -50,6 +109,7 @@ func _ready():
 func set_slide(slide: String) -> void:
 	current_slide = SLIDES[slide]
 	$Label.text = current_slide.label
+	$TextureRect.texture = load(current_slide.image)
 	$HBoxContainer/Button0.text = current_slide.buttons[0].text
 	$HBoxContainer/Button1.text = current_slide.buttons[1].text
 
