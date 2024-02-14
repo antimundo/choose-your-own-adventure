@@ -4,6 +4,7 @@ const SLIDES = {
 	"start": {
 		"label": "You find a dragon",
 		"image": "res://images/0.svg",
+		"sound": "res://sounds/kalimba.ogg",
 		"buttons": {
 			0:{
 				"text": "Attack the dragon",
@@ -18,6 +19,7 @@ const SLIDES = {
 	"attack": {
 		"label": "You attack the dragon, but the dragon shoots fire at you and gets very angry",
 		"image": "res://images/attack.svg",
+		"sound": "res://sounds/bell.ogg",
 		"buttons": {
 			0:{
 				"text": "Attack the dragon again",
@@ -32,6 +34,7 @@ const SLIDES = {
 	"attack_again": {
 		"label": "You attack the dragon again, and the dragon obliterates you with more fire",
 		"image": "res://images/attack_again.svg",
+		"sound": "res://sounds/bell.ogg",
 		"buttons": {
 			0:{
 				"text": "Restart",
@@ -46,6 +49,7 @@ const SLIDES = {
 	"say_sorry": {
 		"label": "You say sorry to the dragon, and the dragon forgives you :)",
 		"image": "res://images/say_sorry.svg",
+		"sound": "res://sounds/bell.ogg",
 		"buttons": {
 			0:{
 				"text": "Restart",
@@ -60,6 +64,7 @@ const SLIDES = {
 	"talk": {
 		"label": "The dragon doesn't answer when you talk to him",
 		"image": "res://images/talk.svg",
+		"sound": "res://sounds/bell.ogg",
 		"buttons": {
 			0:{
 				"text": "Tell the dragon a joke",
@@ -74,6 +79,7 @@ const SLIDES = {
 	"joke": {
 		"label": "The dragon likes your joke",
 		"image": "res://images/joke.svg",
+		"sound": "res://sounds/bell.ogg",
 		"buttons": {
 			0:{
 				"text": "Restart",
@@ -88,6 +94,7 @@ const SLIDES = {
 	"compliment": {
 		"label": "The dragon likes your compliment",
 		"image": "res://images/compliment.svg",
+		"sound": "res://sounds/bell.ogg",
 		"buttons": {
 			0:{
 				"text": "Restart",
@@ -112,6 +119,8 @@ func set_slide(slide: String) -> void:
 	$TextureRect.texture = load(current_slide.image)
 	$HBoxContainer/Button0.text = current_slide.buttons[0].text
 	$HBoxContainer/Button1.text = current_slide.buttons[1].text
+	$"../AudioStreamPlayer".stream = load(current_slide.sound)
+	$"../AudioStreamPlayer".play()
 
 
 func _on_button_0_pressed():
